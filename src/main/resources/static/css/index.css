@@ -1,0 +1,259 @@
+@charset "UTF-8";
+
+
+body {
+	text-align: center;
+	font-family: 'Zen Kaku Gothic Antique', sans-serif;
+	margin-left: 0;
+	margin-right: 0;
+	font-size: 20px;
+}
+
+section {
+	width: 80%;
+	margin: 35px auto 10px auto;
+}
+
+
+
+/*リスト*/
+nav {
+	text-align: center;
+	counter-reset: list;
+	list-style-type: none;
+
+	padding: 0;
+}
+
+.main-menu li {
+	display: inline-block;
+
+
+	position: relative;
+	margin: 7px 10px 7px 10px;
+	padding-left: 40px;
+	padding-right: 20px;
+	font-weight: bold;
+
+	line-height: 30px;
+	border: solid 1px #F6A38B;
+	border-radius: 20px;
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-o-transition: 0.3s;
+	-ms-transition: 0.3s;
+	transition: 0.3s;
+}
+
+.main-menu a {
+	color: rgb(9, 129, 138);
+}
+
+ol li:before {
+	counter-increment: list;
+	content: counter(list);
+	position: absolute;
+	left: 0px;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	color: #fff;
+	line-height: 30px;
+	background: #F6A38B;
+	border-radius: 50%;
+	top: 50%;
+	-moz-transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+
+ol li:hover {
+	background: #F6A38B;
+	color: #fff;
+}
+
+ol li:hover:before {
+	background: #fff;
+	color: #F6A38B;
+}
+
+
+
+
+
+/*選択肢一覧*/
+/*submitをリスト内のリンクと同じようにした*/
+.random {
+	color: rgb(9, 129, 138);
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.aka{
+	color: rgb(255, 57, 57);
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.ki{
+	color: rgb(174, 174, 0);
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.midori{
+	color: rgb(0, 172, 44);
+	font-weight: bold;
+	font-size: 20px;
+}
+
+
+
+
+
+
+
+/*title*/
+.gradient {
+	font-family: 'Merriweather', serif;
+	background: linear-gradient(45deg, #2af598 0%, #009efd 100%);
+	padding: 20px;
+	width: 80%;
+	margin: auto;
+	border-radius: 30px;
+
+
+}
+
+/*下線マーカー*/
+.crayon-orange {
+	box-shadow: 0px -2px 1px -1px rgb(240, 95, 79) inset, 0px 3px 1px -1px rgb(245, 150, 139);
+	margin-left: 47%;
+	margin-right: 47%;
+}
+
+
+
+/*table*/
+table {
+	font-size: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	width: auto;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table th,
+table td {
+	padding: 7px 7px;
+	text-align: center;
+}
+
+table tr:nth-child(odd) {
+	background-color: rgb(240, 251, 253)
+}
+
+
+
+
+
+/*送信削除ボタン*/
+form .formbottom {
+	text-align: center;
+}
+
+form .btns {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 10px;
+	padding: 3px 7px;
+	color: rgb(27, 27, 27);
+	font-weight: bold;
+	letter-spacing: 0.5pt;
+	text-decoration: none;
+	background-color: #ffffff;
+	border: 1px solid rgb(0, 128, 192);
+	cursor: pointer;
+	transition-duration: 0.3s;
+	-webkit-transition-duration: 0.3s;
+	-moz-transition-duration: 0.3s;
+	-o-transition-duration: 0.3s;
+	-ms-transition-duration: 0.3s;
+}
+
+form .btns:hover {
+	color: #ffffff;
+	background-color: rgb(231, 99, 99);
+}
+
+
+/*送信ボタン*/
+form .btnsubmit {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 10px;
+	padding: 9px 20px;
+	color: rgb(27, 27, 27);
+	font-weight: bold;
+	letter-spacing: 0.5pt;
+	text-decoration: none;
+	background-color: rgb(239, 152, 152);
+	border: 1px solid rgb(255, 255, 255);
+	cursor: pointer;
+	transition-duration: 0.3s;
+	-webkit-transition-duration: 0.3s;
+	-moz-transition-duration: 0.3s;
+	-o-transition-duration: 0.3s;
+	-ms-transition-duration: 0.3s;
+}
+
+form .btnsubmit:hover {
+	color: #ffffff;
+	background-color: rgb(231, 99, 99);
+}
+
+
+@media(max-width:1273px) {
+	.title {
+		white-space: nowrap;
+		text-align: center;
+		font-size: 20px;
+	}
+
+	body {
+		text-align: center;
+		font-family: 'Zen Kaku Gothic Antique', sans-serif;
+		margin-left: 0;
+		margin-right: 0;
+		font-size: 20px;
+	}
+
+}
+
+@media(max-width:1150px) {
+	.title {
+		white-space: nowrap;
+		text-align: center;
+	}
+
+	body {
+		text-align: center;
+		font-family: 'Zen Kaku Gothic Antique', sans-serif;
+		margin-left: 0;
+		margin-right: 0;
+		font-size: 14px;
+	}
+
+	/*下線マーカー*/
+	.crayon-orange {
+		box-shadow: 0px -2px 1px -1px rgb(240, 95, 79) inset, 0px 3px 1px -1px rgb(245, 150, 139);
+		margin-left: 45%;
+		margin-right: 45%;
+	}
+
+
+}

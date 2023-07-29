@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>ForWord:解答</title>
+	<link rel="stylesheet" type="text/css" href="/css/answer.css">
+
+
+	<!--text-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@500&display=swap"
+		rel="stylesheet">
+
+
+	<!--title-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+</head>
+
+
+
+<body>
+	<header>
+		<h1 class="gradient">ForWord</h1>
+		<h2 th:text="${msg}" style="color: red;">メッセージ表示領域</h2>
+	</header>
+
+	<section>
+		<!--不正解の時だけ表示-->
+		<div th:if="${msg}=='不正解'">
+			<h4 th:text="'出題された単語 : '+${OutputQuestion}">出題問題を表示する領域</h4>
+			<h4 th:text="'正解は : '+${CorrectAnswer}">答えを表示する領域</h4>
+		</div>
+
+		<div th:if="${msg}=='正解'">
+			<h4 th:text="'出題された単語 : '+${OutputQuestion}">出題問題を表示する領域</h4>
+			<h4 th:text="'訳 : '+${CorrectAnswer}">答えを表示する領域</h4>
+		</div>
+		<br>
+
+
+		<a th:href="@{/quiz}" class="btn btn--select">ホーム画面へ</a>
+
+
+
+
+<!--		<a th:href="@{/quiz/play}" class="btn btn--select">続けて問題を解く</a>-->
+
+		<form method="POST" th:action="@{/quiz/playGreen}" style="display: inline-block;">
+			<input type="hidden" name="BeforeId" th:value="${BeforeId}">
+			<input type="submit" value="続けて解く" class="btn btn--select" style="border: none;">
+		</form>
+	</section>
+</body>
+
+</html>

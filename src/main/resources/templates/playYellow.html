@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>ForWord:学習開始</title>
+
+	<link rel="stylesheet" type="text/css" href="/css/play.css">
+
+
+	<!--text-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@500&display=swap"
+		rel="stylesheet">
+
+
+	<!--title-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+</head>
+
+
+
+<body>
+	<header>
+		<h1 class="gradient">ForWord</h1>
+	</header>
+
+	<section>
+		<div class="crayon-orange">
+			<h3><span style="color: rgb(164, 164, 0);">黄</span>問題</h3>
+		</div>
+
+		<th:block th:if="${msg}">
+			<!--ifがtrueの時に問題が存在しませんと表示-->
+			<p th:text="${msg}" style="color: rgb(255, 30, 30)"></p>
+			<a th:href="@{/quiz}">ホーム画面へ</a>
+		</th:block>
+
+
+		<th:block th:unless="${msg}">
+
+			<h1 th:text="${quizForm.question}">問題内容</h1>
+			<br>
+
+			<form th:action="@{/quiz/checkYellow}" th:object="${quizForm}" method="POST">
+
+				<input type="hidden" th:field="*{id}">
+
+
+				<!--ここの選択肢はランダム処理に書き換える-->
+				<button name="answer" th:value="${rnd_1}" class="selects">
+					<p th:text="${rnd_1}"></p>
+				</button>
+				<button name="answer" th:value="${rnd_2}" class="selects">
+					<p th:text="${rnd_2}"></p>
+				</button>
+				<button name="answer" th:value="${rnd_3}" class="selects">
+					<p th:text="${rnd_3}"></p>
+				</button>
+				<button name="answer" th:value="${rnd_4}" class="selects">
+					<p th:text="${rnd_4}"></p>
+				</button>
+
+			</form>
+
+		</th:block>
+
+	</section>
+
+</body>
+
+</html>

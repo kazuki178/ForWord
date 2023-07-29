@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>ForWord：ホーム</title>
+	<link rel="stylesheet" type="text/css" href="/css/crud.css">
+
+	<!--text-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@500&display=swap"
+		rel="stylesheet">
+
+
+
+	<!--title-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+</head>
+
+
+
+<body>
+	<header>
+		<h1 class="gradient">ForWord</h1>
+	</header>
+
+	<section>
+
+		<div class="crayon-orange">
+			<h4 th:text="${title}" class="title">タイトル</h4>
+		</div>
+
+
+
+		<!--/* 登録・更新完了コメント or 空白は許可されていませんコメント */-->
+		<p th:if="${complete}" th:text="${complete}" style="color: blue"></p>
+		<p th:if="${notcomplete}" th:text="${notcomplete}" style="color:red"></p>
+
+
+		<!--/* ▼▼▼ Form ▼▼▼ */-->
+		<form method="POST" th:action="${quizForm.newQuiz}? @{/quiz/insert} : @{/quiz/update}" th:object="${quizForm}">
+
+			<label>出題する単語の内容</label><br>
+			<textarea rows="1" cols="30" th:field="*{question}"
+				style="font-size: 20px; text-align: center; "></textarea>
+			<br>
+
+
+
+			<label>正解単語の解答</label><br>
+			<textarea rows="1" cols="30" th:field="*{answer}" style="font-size: 20px;  text-align: center;"></textarea>
+			<br>
+
+
+
+			<label>不正解の選択肢1</label><br>
+			<textarea rows="1" cols="30" th:field="*{select_one}"
+				style="font-size: 20px;  text-align: center;"></textarea>
+			<br>
+
+
+
+
+
+
+			<label>不正解の選択肢2</label><br>
+			<textarea rows="1" cols="30" th:field="*{select_two}"
+				style="font-size: 20px;  text-align: center;"></textarea>
+			<br>
+
+
+
+
+			<label>不正解の選択肢3</label><br>
+			<textarea rows="1" cols="30" th:field="*{select_three}"
+				style="font-size: 20px;  text-align: center;"></textarea>
+			<br><br>
+
+
+			<label>問題の難易度</label><br>
+
+			<div class="level">
+				<label style="color: red; " for="red">赤</label> <input type="radio" name="難易度" value="赤"
+					th:field="*{color}" id="red">
+				<label style="color: rgb(138, 138, 0);" for="yellow">黄</label><input type="radio" name="難易度" value="黄"
+					th:field="*{color}" id="yellow">
+				<label style="color: green;" for="green">緑</label> <input type="radio" name="難易度" value="緑"
+					th:field="*{color}" id="green">
+				<label for="normal">未設定</label><input type="radio" name="難易度" value="未設定" th:field="*{color}"
+					id="normal">
+			</div>
+
+
+			<br>
+
+
+			<input th:if="${id}" type="hidden" th:field="*{id}">
+			<input type="submit" value="送信" class="btnsubmit submit" style="margin-top: 30px;">
+		</form>
+		<!--/* △△△ Form △△△ */-->
+
+
+
+		<br>
+		<!--/* ========== ここまで上部エリア ========== */-->
+		<hr>
+
+
+		<div class="tables">
+			<!--/* ========== ここから下部エリア ========== */-->
+
+			<!--/* ▼▼▼ 新規登録時のみ表示 ▼▼▼ */-->
+			<div th:if="${quizForm.newQuiz}" style="margin: 10px">
+				<a href="#" th:href="@{/quiz}">ホームへ戻る</a>
+				<h3>登録単語一覧</h3>
+
+
+				<!--/* 削除完了コメント */-->
+				<p th:if="${delcomplete}" th:text="${delcomplete}" style="color: blue"></p>
+				<p th:if="${msg}" th:text="${msg}" style="color: red"></p>
+
+
+				<!--/* ▼▼▼ クイズ情報が1件でもあれば表示 ▼▼▼ */-->
+				<!--リスト内にクイズがあるかどうか#listsで判定-->
+
+				<table border="1" th:unless="${#lists.isEmpty(list)}" style="table-layout: fixed;">
+					<tr>
+						<th>ID</th>
+						<th>内容</th>
+						<th>正解</th>
+						<th>誤解答選択肢:1</th>
+						<th>誤解答選択肢:2</th>
+						<th>誤解答選択肢:3</th>
+						<th>難易度</th>
+						<th>編集</th>
+						<th>削除</th>
+					</tr>
+
+					<tr th:each="obj : ${list}" align="center">
+						<td th:text="${obj.id}"></td>
+						<td th:text="${obj.question}" align="left"></td>
+						<td th:text="${obj.answer}"></td>
+
+						<!--下記三件は誤解答選択肢-->
+						<td th:text="${obj.select_one}"></td>
+						<td th:text="${obj.select_two}"></td>
+						<td th:text="${obj.select_three}"></td>
+						<td th:text="${obj.color}"></td>
+
+						<!--/* 編集ボタン */-->
+						<td>
+
+							<!--urlにidの値を埋め込むリクエストパラメータ-->
+							<form method="GET" th:action="@{/quiz/{id}(id=${obj.id})}">
+								<input type="submit" value="編集" class="btns submit">
+							</form>
+						</td>
+
+
+						<!--/* 削除ボタン */-->
+						<td>
+							<form method="POST" th:action="@{/quiz/delete}">
+								<input type="hidden" name="id" th:value="${obj.id}"> <input type="submit" value="削除"
+									class="btns submit">
+							</form>
+						</td>
+					</tr>
+				</table>
+				<!--/* △△△ クイズ情報が1件でもあれば表示 △△△ */-->
+
+
+
+				<!--/* ▼▼▼ クイズ情報が1件もない場合表示 ▼▼▼ */-->
+				<p th:if="${#lists.isEmpty(list)}">登録されているクイズはありません。</p>
+				<!--/* △△△ クイズ情報が1件もない場合表示 △△△ */-->
+
+
+			</div>
+			<!--/* △△△ 新規登録時のみ表示 △△△ */-->
+
+
+
+
+			<!--/* ▼▼▼ 新規登録時でない時に表示 ▼▼▼ */-->
+			<p th:unless="${quizForm.newQuiz}">
+				<a href="#" th:href="@{/quiz}">ホーム画面へ戻る</a>
+			</p>
+			<!--/* △△△ 新規登録時でない時に表示 △△△ */-->
+		</div>
+	</section>
+</body>
+
+
+
+
+
+</html>

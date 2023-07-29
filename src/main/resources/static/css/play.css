@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+
+body {
+	text-align: center;
+	font-family: 'Zen Kaku Gothic Antique', sans-serif;
+	margin-left: 0;
+	margin-right: 0;
+	font-size: 20px;
+}
+
+section {
+	width: 80%;
+	margin: 35px auto 10px auto;
+}
+
+
+.gradient {
+	font-family: 'Merriweather', serif;
+	background: linear-gradient(45deg, #2af598 0%, #009efd 100%);
+	padding: 20px;
+	width: 80%;
+	margin: auto;
+	border-radius: 30px;
+
+}
+
+
+.crayon-orange {
+	box-shadow: 0px -2px 1px -1px rgb(240, 95, 79) inset, 0px 3px 1px -1px rgb(245, 150, 139);
+	margin-left: 47%;
+	margin-right: 47%;
+
+}
+
+.selects {
+	margin: auto 8px auto 8px;
+
+
+	padding: 8px 15px 8px 15px;
+
+	border: 2px solid rgb(74, 186, 223);
+	background: rgb(74, 186, 223);
+	color: #fff;
+	transition: 0.5s;
+}
+
+button.selects:hover {
+	color: rgb(24, 109, 137);
+	background: #fff;
+
+}

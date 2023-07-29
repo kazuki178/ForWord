@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+
+body {
+	text-align: center;
+	font-family: 'Zen Kaku Gothic Antique', sans-serif;
+	margin-left: 0;
+	margin-right: 0;
+	font-size: 20px;
+}
+
+section {
+	width: 80%;
+	margin: 35px auto 10px auto;
+}
+
+.gradient {
+	font-family: 'Merriweather', serif;
+	background: linear-gradient(45deg, #2af598 0%, #009efd 100%);
+	padding: 20px;
+	width: 80%;
+	margin: auto;
+	border-radius: 30px;
+}
+
+
+.crayon-orange {
+	box-shadow: 0px -2px 1px -1px rgb(240, 95, 79) inset, 0px 3px 1px -1px rgb(245, 150, 139);
+	margin-left: 47%;
+	margin-right: 47%;
+
+}
+
+
+
+button.selects:hover {
+	color: rgb(24, 109, 137);
+	background: #fff;
+
+}
+
+
+
+
+
+
+*,
+*:before,
+*:after {
+	-webkit-box-sizing: inherit;
+	box-sizing: inherit;
+}
+
+html {
+	/*-webkit-box-sizing: border-box;
+	box-sizing: border-box;*/
+	font-size: 62.5%;
+	/*rem算出をしやすくするために*/
+}
+
+.btn,
+a.btn,
+button.btn {
+	font-size: 1.6rem;
+	font-weight: 700;
+	line-height: 1.5;
+	position: relative;
+	display: inline-block;
+	padding: 1rem 4rem;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+	letter-spacing: 0.1em;
+	color: #212529;
+	border-radius: 0.5rem;
+	margin:10px 20px 0 20px;
+}
+
+
+.btn--select,
+a.btn--select {
+  color: #fff;
+  background-color: rgb(239, 152, 152);
+}
+.btn--select:hover,
+a.btn--select:hover {
+  color: #fff;
+  background-color: rgb(243, 182, 182);
+}
+
+a.btn--radius {
+   border-radius: 100vh;
+}
